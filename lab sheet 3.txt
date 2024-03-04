@@ -1,0 +1,251 @@
+lab sheet 03
+
+01)using System;
+
+internal class Course
+{
+    private string courseName;
+    private string instructorName;
+    private double grade;
+
+    public Course(string courseName, string instructorName, double grade)
+    {
+        this.courseName = courseName;
+        this.instructorName = instructorName;
+        this.grade = grade;
+    }
+
+    public string GetCourseName()
+    {
+        return courseName;
+    }
+
+    public double GetGrade()
+    {
+        return grade;
+    }
+
+    public string GetInstructorName()
+    {
+        return instructorName;
+    }
+
+    public void SetInstructorName(string input)
+    {
+        instructorName = input;
+    }
+
+    private string CalculateLetterGrade()
+    {
+        if (grade >= 75.00 && grade <= 100.00)
+        {
+            return "A";
+        }
+        else if (grade >= 65.00 && grade <= 74.00)
+        {
+            return "B";
+        }
+        else if (grade >= 55.00 && grade <= 64.00)
+        {
+            return "C";
+        }
+        else if (grade >= 35.00 && grade <= 54.00)
+        {
+            return "S";
+        }
+        else
+        {
+            return "F";
+        }
+    }
+
+    public void PrintCourseInfo()
+    {
+        Console.WriteLine("Your course name: " + GetCourseName());
+        Console.WriteLine("Your instructor name: " + GetInstructorName());
+        Console.WriteLine("Your grade: " + CalculateLetterGrade());
+    }internal class Program
+{
+    static void Main(string[] args)
+    {
+        try
+        {
+            Course course = new Course("English", "A.H perera", 56.00);
+            course.PrintCourseInfo();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error: " + ex.Message);
+        }
+    }
+}
+}
+
+
+02)using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace labsheet_03_2
+{
+    internal class Employee
+    {
+        private int Id;
+        private string fullName;
+        private double Salary;
+        public Employee(int Id, string fullName, double Salary)
+        {
+            this.Id = Id;
+            this.fullName = fullName;
+            this.Salary = Salary;
+
+
+        }
+        public void DisplayEmployeeInfo()
+        {
+            Console.WriteLine("Employee ID: " + Id);
+            Console.WriteLine("Full Name: " + fullName);
+            Console.WriteLine("Salary: " + Salary);
+        }
+        public int GetID()
+        {
+            return Id;
+        }
+
+        public string GetFullName()
+        {
+            return fullName;
+        }
+
+        public void SetFullName(string fullname)
+        {
+            fullName = fullname;
+        }
+
+        public double GetSalary()
+        {
+            return Salary;
+        }
+
+        public void SetSalary(double input)
+        {
+            Salary = input;
+        }
+    }internal class Program
+{
+    static void Main(string[] args)
+    { Employee employee = new Employee(101,"Jhon Doe" ,50000.00);
+        employee.DisplayEmployeeInfo();
+    }
+    
+}
+}
+
+03)using System;
+
+namespace labsheet_03__03
+{
+    internal class Product
+    {
+        private int productId;
+        private string productName;
+        private double price;
+        private int quantityInStock;
+
+        public Product(int productId, string productName, double price, int quantityInStock)
+        {
+            this.productId = productId;
+            this.productName = productName;
+            this.price = price;
+            this.quantityInStock = quantityInStock;
+        }
+
+        public void DisplayProductInfo()
+        {
+            Console.WriteLine("Product ID: " + productId);
+            Console.WriteLine("Product Name: " + productName);
+            Console.WriteLine("Product Price: " + price);
+            Console.WriteLine("Quantity in Stock: " + quantityInStock);
+        }
+    }internal class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("shop's inventory");
+        Product details= new Product(101,"Loptop",800.00,10)
+        details.DisplayProductInfo();
+    }
+}
+}
+
+04)using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace labsheet03_4
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Rectangle rectangle = new Rectangle(5.00, 3.00);
+            rectangle.DisplayShapeInfo();
+            Circle circle = new Circle(4.00);
+            circle.DisplayShapeInfo();
+        }
+    }
+internal class Shape
+{
+    public double Val1 { get; }
+    public double Val2 { get; }
+
+    // Constructor for specific dimensions
+    public Shape(double val1, double val2)
+    {
+        Val1 = val1;
+        Val2 = val2;
+    }
+
+    // Constructor for generic cases (default dimensions)
+    public Shape()
+    {
+        Val1 = 0;
+        Val2 = 0;
+    }
+
+    public virtual double CalculateArea()
+    {
+        return Val1 * Val2;
+    }
+
+    public void DisplayShapeInfo()
+    {
+        Console.WriteLine("Area of Shape: " + CalculateArea());
+    }
+internal class Circle : Shape
+{
+    public Circle(double radius) : base(radius, 0) // Circles have only one dimension (radius)
+    {
+    }
+
+    // Override CalculateArea for Circle
+    public override double CalculateArea()
+    {
+        // Area of a circle = π * r^2
+        return Math.PI * Math.Pow(Val1, 2);
+    }
+}
+    internal class Rectangle : Shape
+    {
+        public Rectangle(double length, double width) : base(length, width)
+        {
+        }
+    }
+
+}
+
